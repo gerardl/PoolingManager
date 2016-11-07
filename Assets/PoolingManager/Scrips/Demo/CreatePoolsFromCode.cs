@@ -35,19 +35,19 @@ namespace PoolingSystem.Demo
 
             // but for most cases you would probably just want to grab an object easily from the manager by name
             objectsToReturn = new List<GameObject>();
+            Debug.Log("Got Prefabs directly from PoolingManager: " + testPrefabPool.name);
             for (int i = 0; i < 100; i++)
             {
                 var newObject = PoolingManager.GetPooledObjectByName(poolName);
                 if (newObject != null)
                 {
                     objectsToReturn.Add(newObject);
-                    Debug.Log("Got Prefab directly from PoolingManager: " + testPrefabPool.name);
                     // manipulate it a bit
                     newObject.transform.position = new Vector3(Mathf.PingPong(Time.time, 8) - 4, transform.position.y, transform.position.z);
                     
                 }
             }
-            // now lets return an object to the pool after a delay.
+            // now lets the objects to the pool after a delay.
             // The code to return an object lives on the object itself in
             // a class called PooledObject.  This is added to each object
             // in the pool during pool creation
