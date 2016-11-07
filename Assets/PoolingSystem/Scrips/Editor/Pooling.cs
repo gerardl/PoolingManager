@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 
 namespace PoolingSystem.Editor
 {
@@ -19,12 +20,16 @@ namespace PoolingSystem.Editor
             EditorGUILayout.LabelField("Create New Pool");
             EditorGUILayout.EndHorizontal();
             EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField("List Name", GUILayout.Width(100));
+            EditorGUILayout.LabelField("Pool Name", GUILayout.Width(100));
             m_ListName = EditorGUILayout.TextField(m_ListName, GUILayout.Width(300));
             EditorGUILayout.EndHorizontal();
 
             if (GUILayout.Button("Create"))
+            {
                 Pooling.PoolingManager.CreatePoolingList(null, m_ListName, 100, true, 0, false);
+                var activeScene = EditorSceneManager.GetActiveScene();
+                if (!activeScene.isDirty) EditorSceneManager.MarkSceneDirty(activeScene);
+            }
         }
     }
 }

@@ -28,6 +28,7 @@ namespace PoolingSystem.Demo
                 if (testPrefabPool.TryGetPooledObject(out pooledObjectInstance))
                 {
                     Debug.Log("got prefab from specific PoolingList: " + testPrefabPool.name);
+                    pooledObjectInstance.transform.position = new Vector3(Mathf.PingPong(Time.time, 8) - 4, transform.position.y, transform.position.z);
                 }
             }
 

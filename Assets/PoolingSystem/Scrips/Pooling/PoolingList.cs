@@ -52,9 +52,10 @@ namespace PoolingSystem.Pooling
             for (int i = 0; i < initialSize; i++)
             {
                 GameObject newObject = CreatePooledObject();
-                newObject.SetActive(false);
                 pooledObjects.Add(newObject);
-                availableObjects.Add(newObject);
+                // setting them inactive also 
+                // adds them to the active set of objects
+                newObject.SetActive(false);
             }
         }
 
