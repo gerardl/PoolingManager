@@ -22,7 +22,7 @@ GameObject:
   - 33: {fileID: 33000013958636402}
   - 65: {fileID: 65000011685626872}
   - 23: {fileID: 23000011786672810}
-  - 54: {fileID: 54000010190765698}
+  - 54: {fileID: 54000010602649350}
   m_Layer: 0
   m_Name: TestPrefab1
   m_TagString: Untagged
@@ -79,7 +79,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000014288784360}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &54000010190765698
+--- !u!54 &54000010602649350
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
