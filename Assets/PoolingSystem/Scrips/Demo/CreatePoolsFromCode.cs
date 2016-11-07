@@ -64,8 +64,6 @@ namespace PoolingSystem.Demo
             var fireball = PoolingManager.GetPooledObjectByName(fireballPoolName);
             if (fireball != null) fireball.GetComponent<Fireball>().Fire();
         }
-
-        
     }
 }
 

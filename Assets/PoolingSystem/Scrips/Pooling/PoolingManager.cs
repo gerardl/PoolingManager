@@ -19,8 +19,8 @@ namespace PoolingSystem.Pooling
             {
                 if (poolingContainer == null)
                 {
-                    GameObject.Find(POOLING_GAMEOBJECT_CONTAINER_NAME);
-                    poolingContainer = new GameObject(POOLING_GAMEOBJECT_CONTAINER_NAME);
+                    poolingContainer = GameObject.Find(POOLING_GAMEOBJECT_CONTAINER_NAME);
+                    if (poolingContainer == null) poolingContainer = new GameObject(POOLING_GAMEOBJECT_CONTAINER_NAME);
                 }
                 return poolingContainer;
             }
@@ -30,7 +30,7 @@ namespace PoolingSystem.Pooling
         {
             poolingLists.Add(listName, list);
             list.gameObject.transform.SetParent(PoolingSceneContainer.transform);
-            list.gameObject.name = POOLING_GAMEOBJECT_PREFIX + list.gameObject.transform.name;
+            list.gameObject.name = POOLING_GAMEOBJECT_PREFIX + listName;
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace PoolingSystem.Pooling
         {
             if (!poolingLists.ContainsKey(groupName))
             {
-                GameObject poolingListObject = new GameObject();
+                GameObject poolingListObject = new GameObject(POOLING_GAMEOBJECT_PREFIX + groupName);
                 PoolingList poolingList = poolingListObject.AddComponent<PoolingList>();
                 poolingList.SetupPool(poolingObject, groupName, startingSize, maxSize, fill, autoResize);
                 return poolingList;

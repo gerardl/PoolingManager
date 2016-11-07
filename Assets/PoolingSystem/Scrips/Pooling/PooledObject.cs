@@ -16,6 +16,7 @@ namespace PoolingSystem.Pooling
 
             transform.SetParent(SourcePoolingList.transform);
             transform.localPosition = Vector3.zero;
+            SourcePoolingList.ReturnAvailablePooledObject(gameObject);
         }
     }
 }

@@ -28,7 +28,7 @@ namespace PoolingSystem.Pooling
 
         public void SetupPool(GameObject gameObject, string name, int initialSize, int maxSize, bool fill, bool autoIncrease)
         {
-            this.name = name;
+            this.poolListName = name;
             this.initialSize = initialSize;
             this.maxSize = maxSize;
             this.autoIncrease = autoIncrease;
@@ -42,11 +42,13 @@ namespace PoolingSystem.Pooling
             pooledObjects = new List<GameObject>();
             availableObjects = new List<GameObject>();
             if (autoFill) FillPool();
-            PoolingManager.AddPoolingList(this.name, this);
+            PoolingManager.AddPoolingList(poolListName, this);
         }
 
         public void FillPool()
         {
+            if (pooledObject == null) return;
+
             for (int i = 0; i < initialSize; i++)
             {
                 GameObject newObject = CreatePooledObject();
@@ -99,6 +101,12 @@ namespace PoolingSystem.Pooling
             pooledObjectScript.SourcePoolingList = this;
 
             return newPooledObject;
+        }
+
+        public void ReturnAvailablePooledObject(GameObject availableObject)
+        {
+            if (!availableObjects.Contains(availableObject))
+                availableObjects.Add(availableObject);
         }
 
         public void EmptyPool()
